@@ -16,4 +16,26 @@ then
 	opts=("${opts[@]}" -F /mnt/font/GoMono/14a/font)
 fi
 
-acme "${opts[@]}" "$@"
+if ! pgrep -q plumber
+then
+	plumber
+	function cleanup() {
+		pkill plumber
+	}
+else
+	function cleanup() {
+		:
+	}
+fi
+trap 'cleanup; exit 1' 1 2 3 15
+
+if pgrep -q acme
+then
+	for i in "$@"
+	do
+		plumb "$i"
+	done
+else
+	acme "${opts[@]}" "$@"
+fi
+cleanup
