@@ -5,6 +5,7 @@ EDITOR=acmeedit.bash
 ICON=spaceglenda.icns
 
 RES=$(TARG)/Contents/Resources
+PLIST=$(TARG)/Contents/Info.plist
 
 CONTENTS=\
 	$(RES)/Scripts/$(STARTUP)\
@@ -17,13 +18,15 @@ all: $(CONTENTS)
 
 $(RES)/Scripts/$(STARTUP): $(STARTUP)
 	osacompile -o $(TARG) $<
+	plutil -replace CFBundleDocumentTypes.CFBundleTypeRole -string Editor $(PLIST)
 
 $(RES)/Scripts/%: %
 	install -m 755 $< $@
 
 $(RES)/$(ICON): $(ICON)
-	cp $(ICON) $@
-	plutil -replace CFBundleIconFile -string $< $(TARG)/Contents/Info.plist 
+	cp $< $@
+	plutil -replace CFBundleIconFile -string $< $(PLIST)
+	rm -f $(RES)/droplet.icns
 
 clean:
 	rm -rf $(TARG)
