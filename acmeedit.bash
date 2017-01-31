@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -l
 
 export PLAN9="${PLAN9:-/usr/local/plan9}"
 if ! echo :$PATH: | grep -q :$PLAN9/bin:
