@@ -5,6 +5,8 @@ if ! echo :$PATH: | grep -q :$PLAN9/bin:
 then
 	PATH=$PATH:$PLAN9/bin
 fi
+export LESS=
+export LESSCHARSET=utf-8
 
 opts=()
 if 9p ls font | grep -q GoRegular
