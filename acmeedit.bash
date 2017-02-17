@@ -7,6 +7,7 @@ then
 fi
 export LESS=
 export LESSCHARSET=utf-8
+export GIT_EDITOR='sam -d'
 
 opts=()
 if 9p ls font | grep -q GoRegular
