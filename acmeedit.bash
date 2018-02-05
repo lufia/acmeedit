@@ -10,6 +10,13 @@ export LESSCHARSET=utf-8
 export GIT_EDITOR='sam -d'
 export GIT_PAGER='p'
 
+# ln -s $PLAN9/bin/rc $HOME/bin/-rc
+export SHELL='rc'
+if which -s -- -rc
+then
+	SHELL='-rc'
+fi
+
 opts=()
 if 9p ls font | grep -q GoRegular
 then
