@@ -19,3 +19,8 @@ you should set _PLAN9_ environment variable with `launchctl`.
 ```
 $ launchctl setenv PLAN9 ~/plan9
 ```
+
+## Options
+
+* GoFont
+* 9fans.net/go/acme/editinacme

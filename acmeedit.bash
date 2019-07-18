@@ -7,7 +7,12 @@ then
 fi
 export LESS=
 export LESSCHARSET=utf-8
-export GIT_EDITOR='sam -d'
+GIT_EDITOR='sam -d'
+if which -s editinacme
+then
+	GIT_EDITOR='editinacme'
+fi
+export GIT_EDITOR
 export GIT_PAGER='p'
 
 # ln -s $PLAN9/bin/rc $HOME/bin/-rc
